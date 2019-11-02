@@ -64,14 +64,14 @@ namespace PDF_Reader
 
                 foreach (var factura in facturas)
                 {
-                    var linea = $"{factura.NombreEmisor}" +
-                    $"~{factura.Monto}" +
-                    $"~{factura.FechaEmision}" +
-                    $"~{factura.RfcEmisor}" +
-                    $"~" +
-                    $"~{factura.Uuid}" +
-                    $"~{factura.EfectoComprobante.ToString()}" +
-                    $"~{factura.Estatus}";
+                    var linea = $"{SanitizeString(factura.NombreEmisor)}" +
+                    $",{factura.Monto:0.00}" +
+                    $",{factura.FechaEmision}" +
+                    $",{factura.RfcEmisor}" +
+                    $"," +
+                    $",{factura.Uuid}" +
+                    $",{factura.EfectoComprobante.ToString()}" +
+                    $",{factura.Estatus}";
 
                     lineas.Add(linea);
                 }
@@ -84,6 +84,11 @@ namespace PDF_Reader
             {
                 return false;                
             }
+        }
+
+        internal string SanitizeString(string value)
+        {
+            return value.Replace(',',' ');
         }
     }
 }

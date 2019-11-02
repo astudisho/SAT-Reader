@@ -9,7 +9,7 @@ namespace PDF_Reader
         {
             Console.WriteLine("Facturas !!!");
 
-            string fileNameInput = "factura.txt", fileNameOutput = "facturaSalida.txt";
+            string fileNameInput = "factura.txt", fileNameOutput = "facturaSalida.csv";
 
             Console.WriteLine(args.Count());
 
