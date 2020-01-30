@@ -31,7 +31,7 @@ namespace PDF_Reader
                             RfcPac = campos[(int)Constants.IndiceCampos.RfcPac],
                             FechaEmision = DateTime.Parse(campos[(int)Constants.IndiceCampos.FechaEmision]),
                             FechaCertificacionSat = DateTime.Parse(campos[(int)Constants.IndiceCampos.FechaCertificacionSat]),
-                            Monto = decimal.Parse(campos[(int)Constants.IndiceCampos.Monto]),
+                            Monto = decimal.Parse(campos[(int)Constants.IndiceCampos.Monto].ToString()),
                             EfectoComprobanteChar = char.Parse(campos[(int)Constants.IndiceCampos.EfectoComprobante]),
                             Estatus = campos[(int)Constants.IndiceCampos.Estatus] != "0" ? true : false,
                             FechaCancelacion = DateTime.TryParse(campos[(int)Constants.IndiceCampos.FechaCancelacion], out DateTime dateTime)
@@ -60,7 +60,7 @@ namespace PDF_Reader
         {
             try
             {                
-                List<string> lineas = new List<string>() { Constants.CabeceraCsv };
+                List<string> lineas = new List<string>() { Constants.CabeceraCsvComa };
 
                 foreach (var factura in facturas)
                 {

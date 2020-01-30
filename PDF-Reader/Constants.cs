@@ -26,5 +26,6 @@ namespace PDF_Reader
         }
 
         internal readonly static string CabeceraCsv = "Razon Social~Monto~Fecha~RFC emisor~Concepto~Folio~Efecto~Estatus";
+        internal readonly static string CabeceraCsvComa = "Razon Social,Monto,Fecha,RFC emisor,Concepto,Folio,Efecto,Estatus";
     }
 }

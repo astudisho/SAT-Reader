@@ -9,7 +9,7 @@ namespace PDF_Reader
         {
             Console.WriteLine("Facturas !!!");
 
-            string fileNameInput = "factura.txt", fileNameOutput = "facturaSalida.csv";
+            string fileNameInput = "factura.txt", fileNameOutput =  $"facturaSalida.csv";
 
             Console.WriteLine(args.Count());
 
@@ -21,6 +21,8 @@ namespace PDF_Reader
             {
                 fileNameOutput = args[1];
             }
+
+            fileNameOutput = $"{fileNameInput}Salida.csv";
 
             Console.WriteLine($"Archivo entrada: {fileNameInput}");
             Console.WriteLine($"Archivo salida: {fileNameOutput}");
