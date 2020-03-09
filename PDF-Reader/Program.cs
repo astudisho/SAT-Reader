@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 namespace PDF_Reader
@@ -22,22 +23,29 @@ namespace PDF_Reader
                 fileNameOutput = args[1];
             }
 
-            fileNameOutput = $"{fileNameInput}Salida.csv";
+            var directoryNameInput = "J:\\Users\\javie\\Documents\\csharp\\SAT-Reader\\PDF-Reader\\Metadata\\";
 
-            Console.WriteLine($"Archivo entrada: {fileNameInput}");
-            Console.WriteLine($"Archivo salida: {fileNameOutput}");
+            var archivos = Directory.GetFiles(directoryNameInput, "*.txt");
 
-            var reader = new FacturaReader();
+            foreach (var file in archivos)
+            {
+                fileNameOutput = $"{file}-Salida.csv";
 
-            var facturas = reader.LeerFacturas(fileNameInput);
+                Console.WriteLine($"Archivo entrada: {file}");
+                Console.WriteLine($"Archivo salida: {fileNameOutput}");
 
-            facturas = facturas.OrderBy(f => f.EfectoComprobante)
-                .ThenBy(f => f.Estatus)
-                .ThenBy(f => f.FechaEmision);
+                var reader = new FacturaReader();
 
-            var exito = reader.EscribirFacturasACsv(facturas, fileNameOutput);
+                var facturas = reader.LeerFacturas(file);
 
-            Console.WriteLine("Factura generada!!!");
+                facturas = facturas.OrderBy(f => f.EfectoComprobante)
+                    .ThenBy(f => f.Estatus)
+                    .ThenBy(f => f.FechaEmision);
+
+                var exito = reader.EscribirFacturasACsv(facturas, fileNameOutput);
+
+                Console.WriteLine("Factura generada!!!"); 
+            }
         }
     }
 }

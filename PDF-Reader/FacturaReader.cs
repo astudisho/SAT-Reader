@@ -71,7 +71,7 @@ namespace PDF_Reader
                     $"," +
                     $",{factura.Uuid}" +
                     $",{factura.EfectoComprobante.ToString()}" +
-                    $",{factura.Estatus}";
+                    $",{(factura.Estatus ? "Si" : "No") }";
 
                     lineas.Add(linea);
                 }

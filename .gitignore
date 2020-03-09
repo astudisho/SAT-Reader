@@ -262,3 +262,5 @@ __pycache__/
 
 PDF-Reader/bin
 PDF-Reader/obj
+*.txt
+*.csv

@@ -9,8 +9,8 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/PDF-Reader/bin/Debug/netcoreapp2.2/PDF-Reader.dll",
-            "args": [],
+            "program": "${workspaceFolder}/PDF-Reader/bin/Debug/netcoreapp3.1/PDF-Reader.dll",
+            "args": ["Metadata/Abril.txt"],
             "cwd": "${workspaceFolder}/PDF-Reader",
             "console": "internalConsole",
             "stopAtEntry": false
