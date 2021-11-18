@@ -7,6 +7,45 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Metadata\2020-01-Enero\**" />
+    <Compile Remove="Metadata\2020-02-Febrero\**" />
+    <Compile Remove="Metadata\2020-03-Marzo\**" />
+    <Compile Remove="Metadata\2020-04-Abril\**" />
+    <Compile Remove="Metadata\2020-05-Mayo\**" />
+    <Compile Remove="Metadata\2020-06-Junio\**" />
+    <Compile Remove="Metadata\2020-07-Julio\**" />
+    <Compile Remove="Metadata\2020-08-Agosto\**" />
+    <Compile Remove="Metadata\2020-09-Septiembre\**" />
+    <Compile Remove="Metadata\2020-10-Octubre\**" />
+    <Compile Remove="Metadata\2020-11-Noviembre\**" />
+    <Compile Remove="Metadata\2020-12-Diciembre\**" />
+    <EmbeddedResource Remove="Metadata\2020-01-Enero\**" />
+    <EmbeddedResource Remove="Metadata\2020-02-Febrero\**" />
+    <EmbeddedResource Remove="Metadata\2020-03-Marzo\**" />
+    <EmbeddedResource Remove="Metadata\2020-04-Abril\**" />
+    <EmbeddedResource Remove="Metadata\2020-05-Mayo\**" />
+    <EmbeddedResource Remove="Metadata\2020-06-Junio\**" />
+    <EmbeddedResource Remove="Metadata\2020-07-Julio\**" />
+    <EmbeddedResource Remove="Metadata\2020-08-Agosto\**" />
+    <EmbeddedResource Remove="Metadata\2020-09-Septiembre\**" />
+    <EmbeddedResource Remove="Metadata\2020-10-Octubre\**" />
+    <EmbeddedResource Remove="Metadata\2020-11-Noviembre\**" />
+    <EmbeddedResource Remove="Metadata\2020-12-Diciembre\**" />
+    <None Remove="Metadata\2020-01-Enero\**" />
+    <None Remove="Metadata\2020-02-Febrero\**" />
+    <None Remove="Metadata\2020-03-Marzo\**" />
+    <None Remove="Metadata\2020-04-Abril\**" />
+    <None Remove="Metadata\2020-05-Mayo\**" />
+    <None Remove="Metadata\2020-06-Junio\**" />
+    <None Remove="Metadata\2020-07-Julio\**" />
+    <None Remove="Metadata\2020-08-Agosto\**" />
+    <None Remove="Metadata\2020-09-Septiembre\**" />
+    <None Remove="Metadata\2020-10-Octubre\**" />
+    <None Remove="Metadata\2020-11-Noviembre\**" />
+    <None Remove="Metadata\2020-12-Diciembre\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="itext7" Version="7.1.5" />
   </ItemGroup>
 

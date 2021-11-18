@@ -8,43 +8,54 @@ namespace PDF_Reader
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Facturas !!!");
+            Console.WriteLine("Facturas !!!");            
 
-            string fileNameInput = "factura.txt", fileNameOutput =  $"facturaSalida.csv";
+            var directory = Directory.GetCurrentDirectory();
+            var directoryPath =  Directory.GetParent(directory).Parent.Parent.FullName;
 
-            Console.WriteLine(args.Count());
+            var filesDirectoryPath = $"{directoryPath}\\Metadata";            
 
-            if (args.Count() > 0)
+            // Examina cada carpeta en la raiz, en busca de mas carpetas.
+            CarpetasRecursiva(filesDirectoryPath);
+
+            static void CarpetasRecursiva(string path)
             {
-                fileNameInput = args[0];
+                var carpetas = Directory.GetDirectories(path);
+
+                // Genera facturas de carpeta raiz.
+                GenerarFacturas(path);
+
+                if (!carpetas.Any()) return;
+                // Si hay carpetas en la carpeta raiz, las analiza y genera facturas.
+                foreach (var carpetaPath in carpetas)
+                {
+                    CarpetasRecursiva(carpetaPath);
+                }
             }
-            if(args.Count() > 1)
+
+            static void GenerarFacturas(string carpetaPath)
             {
-                fileNameOutput = args[1];
-            }
+                var archivos = Directory.GetFiles(carpetaPath, "*.txt");
 
-            var directoryNameInput = "J:\\Users\\javie\\Documents\\csharp\\SAT-Reader\\PDF-Reader\\Metadata\\";
+                foreach (var file in archivos)
+                {
+                    var fileNameOutput = $"{file}-Salida.csv";
 
-            var archivos = Directory.GetFiles(directoryNameInput, "*.txt");
+                    Console.WriteLine($"Archivo entrada: {file}");
+                    Console.WriteLine($"Archivo salida: {fileNameOutput}");
 
-            foreach (var file in archivos)
-            {
-                fileNameOutput = $"{file}-Salida.csv";
+                    var reader = new FacturaReader();
 
-                Console.WriteLine($"Archivo entrada: {file}");
-                Console.WriteLine($"Archivo salida: {fileNameOutput}");
+                    var facturas = reader.LeerFacturas(file);
 
-                var reader = new FacturaReader();
+                    facturas = facturas.OrderBy(f => f.EfectoComprobante)
+                        .ThenBy(f => f.Estatus)
+                        .ThenBy(f => f.FechaEmision);
 
-                var facturas = reader.LeerFacturas(file);
+                    var exito = reader.EscribirFacturasACsv(facturas, fileNameOutput);
 
-                facturas = facturas.OrderBy(f => f.EfectoComprobante)
-                    .ThenBy(f => f.Estatus)
-                    .ThenBy(f => f.FechaEmision);
-
-                var exito = reader.EscribirFacturasACsv(facturas, fileNameOutput);
-
-                Console.WriteLine("Factura generada!!!"); 
+                    Console.WriteLine("Factura generada!!!");
+                }
             }
         }
     }
